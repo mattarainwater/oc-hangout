@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68FEF2D4-E7E8-4056-81F9-BDE8E6E9E71E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
+    <RootNamespace>OC</RootNamespace>
+    <AssemblyName>OC</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <GodotProjectGeneratorVersion>1.0.7333.3918</GodotProjectGeneratorVersion>
+    <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
+    <ApiConfiguration Condition=" '$(Configuration)' != 'ExportRelease' ">Debug</ApiConfiguration>
+    <ApiConfiguration Condition=" '$(Configuration)' == 'ExportRelease' ">Release</ApiConfiguration>
+    <ApiConfiguration Condition=" '$(Configuration)' != 'Release' ">Debug</ApiConfiguration>
+    <ApiConfiguration Condition=" '$(Configuration)' == 'Release' ">Release</ApiConfiguration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportDebug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportRelease|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>$(GodotDefineConstants);GODOT;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;TOOLS;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GodotSharp">
+      <Private>False</Private>
+      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="GodotSharpEditor">
+      <Private>False</Private>
+      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
+      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Tools' " />
+    <Reference Include="ink-engine-runtime, Version=1.0.7044.33527, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>scripts\ink-engine-runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="scripts\Common\Extensions\EnumExtensions.cs" />
+    <Compile Include="scripts\Common\Extensions\MathExtensions.cs" />
+    <Compile Include="scripts\Common\GlobalAutoLoad.cs" />
+    <Compile Include="scripts\Common\Model\GameSave.cs" />
+    <Compile Include="scripts\Common\Model\MetaGameInfo.cs" />
+    <Compile Include="scripts\Common\Model\MainGameState.cs" />
+    <Compile Include="scripts\Common\StartScreen.cs" />
+    <Compile Include="scripts\Common\Utils\GameSaveManagement.cs" />
+    <Compile Include="scripts\Dialogue\Actions\LoadMapAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\PauseAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\LoadStoryAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\LoadBattleAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\MakeChoiceAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\ClearAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\FadeInAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\FadeOutAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\RemoveBackgroundAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\ShowChoiceAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\PlayAnimationAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\MoveActorAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\SetBackgroundAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\DespawnActorAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\HideDialogueAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\SpawnActorAction.cs" />
+    <Compile Include="scripts\Dialogue\Actions\ShowDialogueAction.cs" />
+    <Compile Include="scripts\Dialogue\Components\Views\DialogueBoxView.cs" />
+    <Compile Include="scripts\Dialogue\Components\Views\DialogueActorView.cs" />
+    <Compile Include="scripts\Dialogue\Inkle\StoryManager.cs" />
+    <Compile Include="scripts\Dialogue\Inkle\Token.cs" />
+    <Compile Include="scripts\Dialogue\Inkle\Tokenizer.cs" />
+    <Compile Include="scripts\Dialogue\Inkle\StoryExtensions.cs" />
+    <Compile Include="scripts\Dialogue\Components\DialogueManager.cs" />
+    <Compile Include="scripts\Dialogue\Actions\DialogueAction.cs" />
+    <Compile Include="scripts\Common\Containers\Aspect.cs" />
+    <Compile Include="scripts\Common\Containers\Container.cs" />
+    <Compile Include="scripts\Common\Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="scripts\Common\Extensions\ObjectExtensions.cs" />
+    <Compile Include="scripts\Common\Extensions\SetExtensions.cs" />
+    <Compile Include="scripts\Common\Extensions\StringExtensions.cs" />
+    <Compile Include="scripts\Common\Notifications\Global.cs" />
+    <Compile Include="scripts\Common\Notifications\NotificationCenter.cs" />
+    <Compile Include="scripts\Common\Notifications\NotificationExtensions.cs" />
+    <Compile Include="scripts\Common\States\BaseState.cs" />
+    <Compile Include="scripts\Common\States\StateMachine.cs" />
+    <Compile Include="scripts\Common\Utils\EnumUtil.cs" />
+    <Compile Include="scripts\Common\Utils\JSONReader.cs" />
+    <Compile Include="scripts\Main.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\ink-engine-runtime.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="addons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
+      <Version>1.0.0</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

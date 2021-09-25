@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Dialogue/Components/DialogueManager.cs" type="Script" id=1]
+[ext_resource path="res://components/Dialogue/DialogueBox.tscn" type="PackedScene" id=2]
+
+[node name="ViewportContainer" type="ViewportContainer"]
+margin_right = 640.0
+margin_bottom = 360.0
+stretch = true
+stretch_shrink = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 320, 180 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="DialogManager" type="Node2D" parent="Viewport"]
+
+[node name="Fade" type="Polygon2D" parent="Viewport/DialogManager"]
+z_index = 2
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 320, 0, 320, 180, 0, 180 )
+
+[node name="DialogueBox" parent="Viewport/DialogManager" instance=ExtResource( 2 )]
+position = Vector2( 2, 2 )
+z_index = 1
