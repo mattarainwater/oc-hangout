@@ -17,8 +17,8 @@ public class DialogueBoxView : Node2D
 	private float _dt;
 	private float _letterTimeStep = .05f;
 
-	private const int _charPerLine = 43;
-	private const int _maxLines = 2;
+	private const int _charPerLine = 38;
+	private const int _maxLines = 3;
 
 	private ShowDialogueAction _overflowAction;
 
@@ -27,6 +27,7 @@ public class DialogueBoxView : Node2D
 		this.AddObserver(OnDialogue, Global.PerformNotification<ShowDialogueAction>());
 		this.AddObserver(OnHide, Global.PerformNotification<HideDialogueAction>());
 		this.AddObserver(OnChoice, Global.PerformNotification<ShowChoiceAction>());
+		this.AddObserver(OnFadeOut, Global.PerformNotification<FadeOutAction>());
 		this.AddObserver(OnClear, Global.PerformNotification<ClearAction>());
 		Visible = false;
 
@@ -41,6 +42,7 @@ public class DialogueBoxView : Node2D
 		this.RemoveObserver(OnDialogue, Global.PerformNotification<ShowDialogueAction>());
 		this.RemoveObserver(OnHide, Global.PerformNotification<HideDialogueAction>());
 		this.RemoveObserver(OnChoice, Global.PerformNotification<ShowChoiceAction>());
+		this.RemoveObserver(OnFadeOut, Global.PerformNotification<FadeOutAction>());
 		this.RemoveObserver(OnClear, Global.PerformNotification<ClearAction>());
 	}
 
@@ -130,11 +132,25 @@ public class DialogueBoxView : Node2D
 	private void OnHide(object arg1, object arg2)
 	{
 		Visible = false;
+		Next();
 	}
 
 	private void OnChoice(object sender, object args)
 	{
 		Visible = false;
+	}
+
+	private void OnFadeOut(object sender, object args)
+	{
+		var action = args as FadeOutAction;
+		Visible = false;
+		_fullText = "";
+		_displayText = "";
+		_textRemaining = "";
+		_isFinished = false;
+		_inProgess = false;
+		_dt = 0f;
+		this.PostNotification(DialogueManager.DIALOGUE_NEXT, null);
 	}
 
 	private void OnClear(object sender, object args)

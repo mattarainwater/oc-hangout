@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 public class FadeOutAction : DialogueAction
 {
-    public float Time { get; set; } = 1f;
+    public float Time { get; set; } = .5f;
 }

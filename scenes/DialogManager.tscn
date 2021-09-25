@@ -22,7 +22,7 @@ render_target_update_mode = 3
 [node name="DialogManager" type="Node2D" parent="Viewport"]
 
 [node name="Fade" type="Polygon2D" parent="Viewport/DialogManager"]
-z_index = 2
+z_index = 10
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 320, 0, 320, 180, 0, 180 )
 

@@ -1,16 +1,2 @@
-code
-
-	load in sprites/animations/backgrounds/UI
-	seperate out dialogue engine into new project
-	do some debugging
-	
 script
-
-	write out ink script
-
-animations
-
-	Kathegras - Witch
-		Walk
-		Scared
-		Run
+	write out ink script (normal BG Z is "0", bar is "2", bugger is "1", chars are "3")

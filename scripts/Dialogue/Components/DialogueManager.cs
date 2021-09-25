@@ -71,12 +71,12 @@ public class DialogueManager : ViewportContainer
 			{
 				_currentAction = _queuedAction;
 				_queuedAction = null;
+				GD.Print(_currentAction.GetType().ToString());
 				this.PostNotification(Global.PerformNotification(_currentAction.GetType()), _currentAction);
 			}
 			else if(_story != null)
 			{
 				_currentAction = _story.Continue();
-				GD.Print(_currentAction.GetType().ToString());
 				if (_currentAction != null)
 				{
 					var currActionAsDialog = _currentAction as ShowDialogueAction;
@@ -88,6 +88,7 @@ public class DialogueManager : ViewportContainer
 							currActionAsDialog.Text += line;
 						}
 					}
+					GD.Print(_currentAction.GetType().ToString());
 					this.PostNotification(Global.PerformNotification(_currentAction.GetType()), _currentAction);
 				}
 			}
